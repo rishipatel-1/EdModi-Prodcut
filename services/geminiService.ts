@@ -2,7 +2,8 @@
 import { GoogleGenAI } from "@google/genai";
 import { StudentProfile, MicroLesson, ChatMessage, Topic, LearningPlan } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const apiKey = import.meta.env.VITE_GOOGLE_GENAI_API_KEY || process.env.API_KEY || "";
+const ai = new GoogleGenAI({ apiKey });
 
 // --- CACHE SYSTEM ---
 const lessonCache = new Map<string, MicroLesson>();
